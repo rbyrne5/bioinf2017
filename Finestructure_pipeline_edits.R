@@ -219,7 +219,8 @@ done
 #This generally takes up less time than stage 1 so you can reduce your walltime
 #run the same command as above, if -go is selected fs will find out what needs to be done
 #Note that for large datasets with many inds or snps however this step is memory intensive
-#In this case change the number of nodes used by export TASKFARM_PPN=n
+#In this case change the number of cores running at a time by editing the line export TASKFARM_PPN=n
+#Also change the number of nodes needed as with stage 1
 
 
 cat list | while read i
@@ -274,7 +275,7 @@ module load dev intel/2015-u2
 module load dev java/1.7.0_45
 module load apps taskfarm/latest
 module load libs boost/intel/1.55.0
-export TASKFARM_PPN=10
+export TASKFARM_PPN=24
 taskfarm ./chr"$chr"_cp/commandfiles/commandfile2.txt" > run_S2_chr"$chr".pbs
 done
 
